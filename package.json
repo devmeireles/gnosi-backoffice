@@ -12,10 +12,12 @@
     "core-js": "^3.6.5",
     "lodash": "^4.17.20",
     "vue": "^2.6.11",
+    "vue-axios": "^3.2.1",
     "vue-bus": "^1.2.1",
     "vue-i18n": "^8.22.2",
     "vue-router": "^3.4.9",
     "vue-use-vuex": "^0.2.2",
+    "vuejs-jwt": "^1.1.0",
     "vuelidate": "^0.7.6",
     "vuex": "^3.6.0"
   },

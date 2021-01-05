@@ -5,7 +5,7 @@ export default {
   showSnackbar(text, color) {
     Vue.bus.emit(events.SHOW_SNACKBAR, color, text);
   },
-  showErrorSnackbar(text) {
-    Vue.bus.emit(events.SHOW_SNACKBAR, 'error', text);
+  showModal() {
+    Vue.bus.emit(events.OPEN_MODAL);
   },
 };

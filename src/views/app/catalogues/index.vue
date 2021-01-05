@@ -7,5 +7,8 @@
 <script>
 export default {
   name: 'Catalogues',
+  created() {
+    console.log(this.$store.state.Data);
+  },
 };
 </script>

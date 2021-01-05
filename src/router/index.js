@@ -15,7 +15,6 @@ Vue.use(VueRouter);
 
 const guardValidToken = async () => {
   const token = await StorageService.get('token');
-  console.log(token);
   if (!token) {
     return false;
   }
@@ -25,7 +24,6 @@ const guardValidToken = async () => {
 
 const backofficeGuards = async (to, from, next) => {
   const result = await guardValidToken();
-  console.log(result);
   if (!result) {
     next({ name: consts.ROUTES.LOGIN.NAME });
     return;
@@ -58,19 +56,19 @@ const routes = [
         path: consts.ROUTES.DASHBOARD.PATH,
         name: consts.ROUTES.DASHBOARD.NAME,
         component: Dashboard,
-        meta: { namespace: 'route-dashboard', permission: 'DASHBOARD.VIEW' },
+        meta: { namespace: 'route-dashboard', permission: 'DASHBOARD.VIEW', single: consts.ROUTES.DASHBOARD.SINGLE },
       },
       {
         path: consts.ROUTES.CATALOGUES.PATH,
         name: consts.ROUTES.CATALOGUES.NAME,
         component: Catalogues,
-        meta: { namespace: 'route-catalogues', permission: 'DASHBOARD.VIEW' },
+        meta: { namespace: 'route-catalogues', permission: 'DASHBOARD.VIEW', single: consts.ROUTES.CATALOGUES.SINGLE },
       },
       {
         path: consts.ROUTES.CATEGORIES.PATH,
         name: consts.ROUTES.CATEGORIES.NAME,
         component: Categories,
-        meta: { namespace: 'route-categories', permission: 'DASHBOARD.VIEW' },
+        meta: { namespace: 'route-categories', permission: 'DASHBOARD.VIEW', single: consts.ROUTES.CATEGORIES.SINGLE },
       },
     ],
   },

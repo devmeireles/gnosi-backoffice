@@ -9,27 +9,18 @@
         <div class="container-fluid">
           <div class="header-body">
             <div class="row align-items-center py-4">
-              <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Icons</h6>
-                <nav
-                  aria-label="breadcrumb"
-                  class="d-none d-md-inline-block ml-md-4"
+              <div class="col-lg-6 col-5 ml-auto text-right">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-neutral"
+                  v-if="this.$route.meta.single !== 'dashboard'"
+                  @click="openModal()"
                 >
-                  <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                    <li class="breadcrumb-item">
-                      <a href="#"><i class="fas fa-home"></i></a>
-                    </li>
-                    <li class="breadcrumb-item">
-                      <a href="#">Components</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                      Icons
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-              <div class="col-lg-6 col-5 text-right">
-                <a href="#" class="btn btn-sm btn-neutral">New</a>
+                  <span>
+                    <i class="ni ni-fat-add"></i>
+                    New {{ this.$t(getSingle()) }}
+                  </span>
+                </button>
                 <a href="#" class="btn btn-sm btn-neutral">Filters</a>
               </div>
             </div>
@@ -41,7 +32,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header bg-transparent">
-              <h3 class="mb-0">Icons</h3>
+              <h3 class="mb-0">{{ this.$t(getBreadCrumb()) }}</h3>
             </div>
             <div class="card-body">
               <router-view></router-view>
@@ -56,12 +47,26 @@
 <script>
 import Sidebar from '@/components/shared/Sidebar';
 import Navbar from '@/components/shared/Navbar';
+import NotificationService from '@/services/NotificationService';
 
 export default {
   name: 'App',
   components: {
     Sidebar,
     Navbar,
+  },
+  methods: {
+    getBreadCrumb() {
+      return this.$route.meta.namespace;
+    },
+
+    getSingle() {
+      return this.$route.meta.single;
+    },
+
+    openModal() {
+      NotificationService.showModal();
+    },
   },
 };
 </script>

@@ -1,7 +1,7 @@
 import error from './error';
-import commom from './commom';
+import common from './common';
 
 export default {
   ...error,
-  ...commom,
+  ...common,
 };

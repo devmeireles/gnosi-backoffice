@@ -86,8 +86,8 @@ export default {
   },
   data: () => ({
     loading: false,
-    username: '',
-    password: '',
+    username: 'master2',
+    password: 'aVeryStrogPassw0rd!',
   }),
   validations: {
     username: { required },
@@ -96,15 +96,12 @@ export default {
   methods: {
     async login() {
       this.validate();
-      console.log(this.$v);
       if (!this.$v.$invalid) {
         try {
           this.loading = true;
           await AuthService.login(this.username, this.password);
-          this.$router.push({ name: this.$consts.ROUTES.DASHBOARD.NAME })
-            .catch((error) => console.log(error));
+          this.$router.push({ name: this.$consts.ROUTES.DASHBOARD.NAME });
         } catch (err) {
-          console.log();
           NotificationService.showSnackbar(err.response.data.error || err.response.data.data, 'danger');
         } finally {
           this.loading = false;
